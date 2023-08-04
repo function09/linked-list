@@ -40,7 +40,6 @@ class LinkedList {
   }
 
   headValue() {
-    console.log(this.head);
     return this.head;
   }
 
@@ -51,6 +50,45 @@ class LinkedList {
       node = node.nextNode;
       if (node.nextNode === null) {
         return node;
+      }
+    }
+  }
+
+  at(index) {
+    const nodeArray = [];
+    let node = this.head;
+
+    nodeArray.push(node);
+
+    while (node) {
+      node = node.nextNode;
+      nodeArray.push(node);
+    }
+    return nodeArray[index];
+  }
+
+  pop() {
+    let node = this.head;
+
+    while (node) {
+      node = node.nextNode;
+      if (node.nextNode === this.tailValue()) {
+        node.nextNode = null;
+        return node;
+      }
+    }
+  }
+
+  contains(value) {
+    let node = this.head;
+
+    while (node) {
+      node = node.nextNode;
+      if (node.value === value) {
+        return true;
+      }
+      if (node.value !== value) {
+        return false;
       }
     }
   }

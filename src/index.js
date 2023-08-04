@@ -11,4 +11,7 @@ linkedList.append(6);
 linkedList.size();
 linkedList.headValue();
 linkedList.tailValue();
-console.log(linkedList);
+linkedList.at(5);
+linkedList.pop();
+linkedList.append(7);
+linkedList.contains(7);
