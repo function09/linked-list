@@ -39,11 +39,11 @@ class LinkedList {
     return sizeCounter;
   }
 
-  headValue() {
+  headNode() {
     return this.head;
   }
 
-  tailValue() {
+  tailNode() {
     let node = this.head;
 
     while (node !== null) {
@@ -55,42 +55,62 @@ class LinkedList {
   }
 
   at(index) {
-    const nodeArray = [];
     let node = this.head;
 
-    nodeArray.push(node);
-
-    while (node) {
+    for (let i = 0; i < index; i += 1) {
       node = node.nextNode;
-      nodeArray.push(node);
     }
-    return nodeArray[index];
+    return node;
   }
 
   pop() {
     let node = this.head;
 
     while (node) {
-      node = node.nextNode;
-      if (node.nextNode === this.tailValue()) {
+      if (node.nextNode === this.tailNode()) {
         node.nextNode = null;
-        return node;
       }
+      node = node.nextNode;
     }
+    return node;
   }
 
   contains(value) {
     let node = this.head;
 
     while (node) {
-      node = node.nextNode;
       if (node.value === value) {
         return true;
       }
-      if (node.value !== value) {
-        return false;
+      node = node.nextNode;
+    }
+    return false;
+  }
+
+  find(value) {
+    let node = this.head;
+    let i = 0;
+    while (node) {
+      i += 1;
+      if (node.value === value) {
+        return i;
+      }
+      node = node.nextNode;
+    }
+    return null;
+  }
+
+  toString() {
+    let node = this.head;
+    let string = "";
+    while (node) {
+      string += `(${node.value}) -> `;
+      node = node.nextNode;
+      if (node === null) {
+        string += "null";
       }
     }
+    console.log(string);
   }
 }
 
